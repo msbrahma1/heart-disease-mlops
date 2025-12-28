@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  heart-disease-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: heart-disease-api:latest
+    container_name: heart-disease-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./heart_disease_best_model.pkl:/app/heart_disease_best_model.pkl:ro
+      - ./model_metadata.json:/app/model_metadata.json:ro
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - heart-disease-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  heart-disease-network:
+    driver: bridge
