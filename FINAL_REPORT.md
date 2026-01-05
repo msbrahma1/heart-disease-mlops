@@ -365,8 +365,10 @@ y_prob = rf.predict_proba(X_test_scaled)[:, 1]
 | **Accuracy** | 86.89% | Correct predictions on 86.89
 
 ## 9. Contributors
-|Brahma Mutya - 2024AA05100
-|Priyanka Patra - 2024AA05701
-|Vishal Mishra -2024AA05081
-|Sayali Shirke - 2024AA05703
-|Pranav Dube - 2024AA05660
+
+- Brahma Mutya – 2024AA05100  
+- Priyanka Patra – 2024AA05701  
+- Vishal Mishra – 2024AA05081  
+- Sayali Shirke – 2024AA05703  
+- Pranav Dube – 2024AA05660  
+
